@@ -31,7 +31,7 @@ public class HomeController {
     @Autowired
     private JwtTokenProvider tokenProvider;
     
-	@GetMapping("/login")
+	@PostMapping("/login")
 	public ResponseEntity<LoginResponse> authenticationUser(@Valid @RequestBody LoginRequest loginRequest) {
 		System.out.println("in");
 		Authentication authentication =  authenticationManager.authenticate(
