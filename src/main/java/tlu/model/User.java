@@ -16,7 +16,7 @@ public class User {
 	@Column(name = "USER_ID")
 	private long userId;
 	
-	@Column(name = "USER_NAME", length = 30)
+	@Column(name = "USERNAME", length = 30)
 	private String username;
 	
 	@Column(name = "PASSWORD", length = 100)
@@ -43,6 +43,20 @@ public class User {
 	public User(String username  ,String password ) {
 		this.username=username;
 		this.password=password;
+	}
+	
+	
+
+	public User(Long id, String username, String password, String fullname, String email, String phone, String role,
+			boolean locked) {
+		this.userId = id;
+		this.username = username;
+		this.password = password;
+		this.fullname = fullname;
+		this.email = email;
+		this.phone = phone;
+		this.role = role;
+		this.locked = locked;
 	}
 
 	public long getUserId() {
