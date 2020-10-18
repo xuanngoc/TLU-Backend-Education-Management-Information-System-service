@@ -47,9 +47,9 @@ public class User {
 	
 	
 
-	public User(Long id, String username, String password, String fullname, String email, String phone, String role,
+	public User(String username, String password, String fullname, String email, String phone, String role,
 			boolean locked) {
-		this.userId = id;
+		
 		this.username = username;
 		this.password = password;
 		this.fullname = fullname;
