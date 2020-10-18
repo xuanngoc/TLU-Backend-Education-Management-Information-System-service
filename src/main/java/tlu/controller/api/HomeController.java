@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javassist.expr.NewArray;
 import tlu.jwt.JwtTokenProvider;
+import tlu.model.User;
 import tlu.model.UserPrincipal;
 import tlu.payload.LoginRequest;
 import tlu.payload.LoginResponse;
+import tlu.service.UserService;
 
 @RestController
 @RequestMapping("api/v1")
@@ -31,9 +32,11 @@ public class HomeController {
     @Autowired
     private JwtTokenProvider tokenProvider;
     
-	@PostMapping("/login")
+    @Autowired
+    private UserService userService;
+    
+	@PostMapping(path = "/login", produces = "application/json")
 	public ResponseEntity<LoginResponse> authenticationUser(@Valid @RequestBody LoginRequest loginRequest) {
-		System.out.println("in");
 		Authentication authentication =  authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(
 						loginRequest.getUsername(),
@@ -46,9 +49,12 @@ public class HomeController {
 		return new ResponseEntity<LoginResponse>(new LoginResponse(jwt), HttpStatus.OK);
 	}
 	
-	/*
-	 * @GetMapping("/login") public ResponseEntity<String> getLogin() { return new
-	 * ResponseEntity<String>("ok", HttpStatus.OK); }
-	 */
+	@GetMapping("/user")
+	public ResponseEntity<User> getUserInfo(Authentication authentication) {
+		String username = authentication.getName();
+		User user = userService.findUserByUsername(username);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+
 	
 }

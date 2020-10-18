@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class MonHocController {
 	@Autowired
 	private MonHocService monHocService;
 	
+	@CrossOrigin("http://localhost:3000")
 	@GetMapping("")
 	public ResponseEntity<List<MonHoc>> getMonHoc() {
 		return new ResponseEntity<List<MonHoc>>(monHocService.getAll(), HttpStatus.OK);

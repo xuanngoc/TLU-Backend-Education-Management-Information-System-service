@@ -1,7 +1,5 @@
 package tlu.service;
 
-import java.nio.file.attribute.UserPrincipalNotFoundException;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +28,11 @@ public class UserService implements UserDetailsService {
 			throw new UsernameNotFoundException(username);
 		}
 		return new UserPrincipal(user, passwordEncoder);
+	}
+	
+	public User findUserByUsername(String username) {
+		return userRepository.findByUsername(username);
+		
 	}
 	
 	public UserPrincipal loadUserById(long id) {
