@@ -1,14 +1,8 @@
 package tlu.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class MonHoc {
@@ -23,13 +17,8 @@ public class MonHoc {
 	@Column(name = "SO_TIN_CHI")
 	private int soTinChi;
 
-	@ManyToOne(cascade={CascadeType.ALL})
-    @JoinColumn(name="HOC_PHAN_TIEN_QUYET_ID")
-	private MonHoc monHoc;
-	
-	@OneToMany(mappedBy = "monHoc")
 	@Column(name = "HOC_PHAN_TIEN_QUYET")
-	private List<MonHoc> hocPhanTienQuyet;
+	private String hocPhanTienQuyet;
 	
 	@Column(name = "SO_GIO")
 	private int soGio;
@@ -65,11 +54,11 @@ public class MonHoc {
 		this.soTinChi = soTinChi;
 	}
 
-	public List<MonHoc> getHocPhanTienQuyet() {
+	public String getHocPhanTienQuyet() {
 		return hocPhanTienQuyet;
 	}
 
-	public void setHocPhanTienQuyet(List<MonHoc> hocPhanTienQuyet) {
+	public void setHocPhanTienQuyet(String hocPhanTienQuyet) {
 		this.hocPhanTienQuyet = hocPhanTienQuyet;
 	}
 

@@ -16,7 +16,7 @@ import tlu.repository.UserRepository;
 
 
 @SpringBootApplication
-public class EducationManagementSystemApplication implements CommandLineRunner {
+public class EducationManagementSystemApplication {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;

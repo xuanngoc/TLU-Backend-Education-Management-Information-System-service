@@ -17,7 +17,7 @@ public class GiaoVien {
 	private String maGiaoVien;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MA_BO_MON", nullable =  false)
+	@JoinColumn(name = "MA_BO_MON")
 	private BoMon thuocBoMon;
 	
 	@OneToOne(cascade = CascadeType.ALL)

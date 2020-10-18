@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 public class BoMon {
 	
 	@Id
-	@Column(name = "MA_GIAO_VIEN", length = 10)
+	@Column(name = "MA_BO_MON", length = 10)
 	private String maBoMon;
 	
 	@Column(name = "TEN_BO_MON", length = 30)
