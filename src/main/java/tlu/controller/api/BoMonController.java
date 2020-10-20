@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,4 +50,18 @@ public class BoMonController {
 		
 		boMonRepository.save(bMon);
 	}
+	
+	@PutMapping
+	void editTruongBoMon(@RequestBody BoMonRequest boMonRequest) {
+		GiaoVien giaoVien = giaoVienRepository.findById(boMonRequest.getTruongBoMon()).get();
+		BoMon bMon = boMonRepository.findById(boMonRequest.getMaBoMon()).get();
+		bMon.setTruongBoMon(giaoVien);
+		boMonRepository.save(bMon);
+	}
+	
+	@GetMapping("/{maBoMon}")
+	public ResponseEntity<BoMon> getBoMon(@PathVariable String maBoMon) {
+		return new ResponseEntity<BoMon>(boMonRepository.findById(maBoMon).get(), HttpStatus.OK);
+	}
+	
 }

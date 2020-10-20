@@ -5,12 +5,17 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity(name = "BO_MON")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="maBoMon", scope=BoMon.class)
 public class BoMon {
 	
 	@Id
@@ -21,15 +26,20 @@ public class BoMon {
 	private String tenBoMon;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "TRUONG_BO_MON")
 	private GiaoVien truongBoMon;
 	
-	@OneToMany(mappedBy = "thuocBoMon", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "thuocBoMon", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Collection<GiaoVien> danhSachGiaoVien;
 
 	
-	public BoMon() {}
+	
+
+	public BoMon() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public BoMon(String maBoMon, String tenBoMon, GiaoVien truongBoMon, Collection<GiaoVien> danhSachGiaoVien) {
 		super();

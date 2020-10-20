@@ -1,5 +1,7 @@
 package tlu.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,14 +11,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity(name = "GIAO_VIEN")
-public class GiaoVien {
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="maGiaoVien", scope=GiaoVien.class)
+public class GiaoVien implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "MA_GIAO_VIEN", length = 10)
 	private String maGiaoVien;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "MA_BO_MON")
 	private BoMon thuocBoMon;
 	
