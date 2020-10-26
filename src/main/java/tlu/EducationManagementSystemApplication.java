@@ -16,7 +16,7 @@ import tlu.repository.UserRepository;
 
 
 @SpringBootApplication
-public class EducationManagementSystemApplication {
+public class EducationManagementSystemApplication implements CommandLineRunner {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -33,20 +33,21 @@ public class EducationManagementSystemApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**");
+				registry.addMapping("/**")
+				.allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS");
 			} 
 		};
     }
-	/*
-	 * @Override public void run(String... args) throws Exception { User user = new
-	 * User( 1L, "daotao", "1234", "Bui Xuan Ngoc", "daotao@thanglong.edu.vn",
-	 * "0999222333", "DAOTAO", false);
-	 * user.setPassword(passwordEncoder.encode(user.getPassword())); Optional<User>
-	 * tmpUser = userRepository.findById(user.getUserId()); if
-	 * (!tmpUser.isPresent()) { userRepository.save(user); }
-	 * 
-	 * }
-	 */
+	
+	 @Override 
+	 public void run(String... args) throws Exception {
+		 User user = new User( 1L, "daotao", "1234", "Bui Xuan Ngoc", "daotao@thanglong.edu.vn", "0999222333", "DAOTAO", false);
+		 user.setPassword(passwordEncoder.encode(user.getPassword())); 
+		 Optional<User> tmpUser = userRepository.findById(user.getUserId()); 
+		 if	 (!tmpUser.isPresent()) {
+			 userRepository.save(user); 
+		 }
+	 }
 	
 	
 }

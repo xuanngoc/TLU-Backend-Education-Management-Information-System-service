@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import tlu.config.ApplicationRole;
@@ -41,7 +40,8 @@ public class GiaoVienController {
 	
 	@GetMapping()
 	public ResponseEntity<List<GiaoVien>> getAll() {
-		return new ResponseEntity<List<GiaoVien>>(giaoVienRepository.findAll(), HttpStatus.OK);
+		List<GiaoVien> allGiaoViens = giaoVienRepository.findAll();
+		return new ResponseEntity<List<GiaoVien>>(allGiaoViens, HttpStatus.OK);
 	}
 	
 	@PostMapping()
