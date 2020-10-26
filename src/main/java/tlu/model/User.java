@@ -50,6 +50,19 @@ public class User {
 	
 	
 
+	public User(long userId, String username, String password, String fullname, String email, String phone, String role,
+			boolean locked) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.fullname = fullname;
+		this.email = email;
+		this.phone = phone;
+		this.role = role;
+		this.locked = locked;
+	}
+
 	public User(String username, String password, String fullname, String email, String phone, String role,
 			boolean locked) {
 		

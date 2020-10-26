@@ -22,7 +22,7 @@ import tlu.repository.BoMonRepository;
 import tlu.repository.GiaoVienRepository;
 
 @RestController
-@RequestMapping("api/v1/bo-mon")
+@RequestMapping(path = "api/v1/bo-mon", produces = "application/json;charset=UTF-8")
 public class BoMonController {
 
 	@Autowired
@@ -42,7 +42,6 @@ public class BoMonController {
 		BoMon bMon = new BoMon();
 		bMon.setMaBoMon(boMonRequest.getMaBoMon());
 		bMon.setTenBoMon(boMonRequest.getTenBoMon());
-		
 		Optional<GiaoVien> giaoVien = giaoVienRepository.findById(boMonRequest.getTruongBoMon());
 		if (giaoVien.isPresent()) {
 			bMon.setTruongBoMon(giaoVien.get());
