@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import tlu.model.ChuongTrinhDaoTao;
 import tlu.model.NamHoc;
+import tlu.model.NganhHoc;
+import tlu.repository.ChuongTrinhDaoTaoRepository;
 import tlu.repository.NamHocRepository;
+import tlu.repository.NganhHocRepository;
 
 
 @RestController
@@ -22,6 +26,12 @@ public class NamHocController {
 	@Autowired
 	private NamHocRepository namHocRepository;
 	
+	@Autowired
+	private NganhHocRepository nganhHocRepository;
+	
+	@Autowired
+	private ChuongTrinhDaoTaoRepository chuongTrinhDaoTaoRepository;
+	
 	@GetMapping
 	public ResponseEntity<List<NamHoc>> getAll() {
 		List<NamHoc> namHocs = namHocRepository.findAll();
@@ -30,15 +40,22 @@ public class NamHocController {
 	
 	
 	@PostMapping
-	public ResponseEntity<Object> create(@RequestBody String tenNamHoc) {
-		NamHoc namHoc = new NamHoc();
-		namHoc.setTenNamHoc(tenNamHoc);
+	public ResponseEntity<Object> create(@RequestBody NamHoc namHoc) {
 		
-		namHocRepository.save(namHoc);
+		NamHoc nh = namHocRepository.save(namHoc);
+		// When a new School Year was created, Education Program will be generate automatically for  each Major;
+		List<NganhHoc> nganhHocs = nganhHocRepository.findAll();
+		nganhHocs.forEach((nganhHoc ) -> 
+			saveChuongTrinhDaoTao(nh, nganhHoc)
+		);
 		
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
 	
+	private void saveChuongTrinhDaoTao(NamHoc namHoc, NganhHoc nganhHoc) {
+		ChuongTrinhDaoTao chuongTrinhDaoTao = new ChuongTrinhDaoTao(nganhHoc, namHoc);
+		chuongTrinhDaoTaoRepository.save(chuongTrinhDaoTao);
+	}
 	
 	
 	

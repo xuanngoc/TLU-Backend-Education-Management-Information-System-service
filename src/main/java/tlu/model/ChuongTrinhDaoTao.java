@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -13,7 +14,7 @@ import javax.persistence.OneToMany;
 public class ChuongTrinhDaoTao {
 
 	@Id
-	@GeneratedValue
+	 @GeneratedValue(strategy = GenerationType.AUTO)
 	private long maChuongTrinhDaoTao;
 	
 	@ManyToOne
@@ -29,6 +30,14 @@ public class ChuongTrinhDaoTao {
 	public ChuongTrinhDaoTao() {
 		super();
 	}
+	
+	public ChuongTrinhDaoTao(NganhHoc nganhHoc, NamHoc namHoc) {
+		super();
+		this.nganhHoc = nganhHoc;
+		this.namHoc = namHoc;
+	}
+
+
 
 	public long getMaChuongTrinhDaoTao() {
 		return maChuongTrinhDaoTao;
