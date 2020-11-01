@@ -2,12 +2,9 @@ package tlu.service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -31,7 +28,13 @@ public class FileService {
 		        mh.setMaMon(row.getCell(0).getStringCellValue());
 		        mh.setTenMon(row.getCell(1).getStringCellValue());
 		        mh.setSoTinChi(Integer.parseInt(row.getCell(2).getStringCellValue()));
-		       // mh.setHocPhanTienQuyet(Arrays.asList(row.getCell(3).getStringCellValue().split(",")));
+		        try {
+		        	mh.setHocPhanTienQuyet(row.getCell(3).getStringCellValue());
+				} catch (Exception e) {
+					
+				}
+	
+		       
 		        mh.setSoGio((int) row.getCell(4).getNumericCellValue());
 		        mh.setHeSo(row.getCell(5).getNumericCellValue());
 		        monHocList.add(mh);
