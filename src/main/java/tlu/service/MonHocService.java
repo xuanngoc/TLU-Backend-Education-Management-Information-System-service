@@ -20,6 +20,10 @@ public class MonHocService {
 		return monHocRepository.findAll();
 	}
 	
+	public List<MonHoc> getAll1(String maChuongTrinhDaoTao) {
+		return monHocRepository.getListMonHocByCTDD(maChuongTrinhDaoTao);
+	}
+	
 	public void readMonHocFromFile(InputStream fileInputStream) {
 		try {
 			FileService.readMonHocFromFile(fileInputStream).forEach(monHoc -> {

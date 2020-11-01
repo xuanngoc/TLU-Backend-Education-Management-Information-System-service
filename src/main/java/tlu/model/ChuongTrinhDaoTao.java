@@ -9,12 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="maChuongTrinhDaoTao", scope=ChuongTrinhDaoTao.class)
 public class ChuongTrinhDaoTao {
 
 	@Id
 	 @GeneratedValue(strategy = GenerationType.AUTO)
-	private long maChuongTrinhDaoTao;
+	private Long maChuongTrinhDaoTao;
 	
 	@ManyToOne
 	private NganhHoc nganhHoc;
@@ -23,7 +28,7 @@ public class ChuongTrinhDaoTao {
 	private NamHoc namHoc;
 	
 	@OneToMany(mappedBy = "chuongTrinhDaoTao")
-	private List<HocPhanThuocChuongTrinhDaoTao> hocChuongTrinhDaoTao;
+	private List<HocPhanThuocChuongTrinhDaoTao> hocPhanThuocChuongTrinhDaoTaos;
 
 	
 	public ChuongTrinhDaoTao() {
@@ -63,11 +68,11 @@ public class ChuongTrinhDaoTao {
 	}
 
 	public List<HocPhanThuocChuongTrinhDaoTao> getHocChuongTrinhDaoTao() {
-		return hocChuongTrinhDaoTao;
+		return hocPhanThuocChuongTrinhDaoTaos;
 	}
 
 	public void setHocChuongTrinhDaoTao(List<HocPhanThuocChuongTrinhDaoTao> hocChuongTrinhDaoTao) {
-		this.hocChuongTrinhDaoTao = hocChuongTrinhDaoTao;
+		this.hocPhanThuocChuongTrinhDaoTaos = hocChuongTrinhDaoTao;
 	}
 	
 }

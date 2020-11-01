@@ -7,7 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity(name = "SINH_VIEN")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="maSinhVien", scope=SinhVien.class)
 public class SinhVien {
 	
 	@Id
