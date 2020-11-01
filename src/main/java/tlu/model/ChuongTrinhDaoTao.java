@@ -1,7 +1,6 @@
 package tlu.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ public class ChuongTrinhDaoTao {
 	private NamHoc namHoc;
 	
 	@OneToMany(mappedBy = "chuongTrinhDaoTao")
-	private Set<HocPhanThuocChuongTrinhDaoTao> hocChuongTrinhDaoTao = new HashSet<HocPhanThuocChuongTrinhDaoTao>();
+	private List<HocPhanThuocChuongTrinhDaoTao> hocChuongTrinhDaoTao;
 
 	
 	public ChuongTrinhDaoTao() {
@@ -63,11 +62,11 @@ public class ChuongTrinhDaoTao {
 		this.namHoc = namHoc;
 	}
 
-	public Set<HocPhanThuocChuongTrinhDaoTao> getHocChuongTrinhDaoTao() {
+	public List<HocPhanThuocChuongTrinhDaoTao> getHocChuongTrinhDaoTao() {
 		return hocChuongTrinhDaoTao;
 	}
 
-	public void setHocChuongTrinhDaoTao(Set<HocPhanThuocChuongTrinhDaoTao> hocChuongTrinhDaoTao) {
+	public void setHocChuongTrinhDaoTao(List<HocPhanThuocChuongTrinhDaoTao> hocChuongTrinhDaoTao) {
 		this.hocChuongTrinhDaoTao = hocChuongTrinhDaoTao;
 	}
 	

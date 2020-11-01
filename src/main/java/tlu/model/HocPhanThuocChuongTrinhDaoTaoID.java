@@ -7,38 +7,36 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class HocPhanThuocChuongTrinhDaoTaoID implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 8165221362762243236L;
 
-	private long chuongTrinhDaoTaoID;
-	private String monHocID;
+	private long maChuongTrinhDaoTao;
+	private String maMonHoc;
 	
 	public HocPhanThuocChuongTrinhDaoTaoID() {
 		super();
 	}
 
-	public HocPhanThuocChuongTrinhDaoTaoID(long chuongTrinhDaoTaoID, String monHocID) {
+	public HocPhanThuocChuongTrinhDaoTaoID(long maChuongTrinhDaoTao, String maMonHoc) {
 		super();
-		this.chuongTrinhDaoTaoID = chuongTrinhDaoTaoID;
-		this.monHocID = monHocID;
+		this.maChuongTrinhDaoTao = maChuongTrinhDaoTao;
+		this.maMonHoc = maMonHoc;
 	}
 
-	public long getChuongTrinhDaoTaoID() {
-		return chuongTrinhDaoTaoID;
+	public long getMaChuongTrinhDaoTao() {
+		return maChuongTrinhDaoTao;
 	}
 
-	public void setChuongTrinhDaoTaoID(long chuongTrinhDaoTaoID) {
-		this.chuongTrinhDaoTaoID = chuongTrinhDaoTaoID;
+	public void setMaChuongTrinhDaoTao(long maChuongTrinhDaoTao) {
+		this.maChuongTrinhDaoTao = maChuongTrinhDaoTao;
 	}
 
-	public String getMonHocID() {
-		return monHocID;
+	public String getMaMonHoc() {
+		return maMonHoc;
 	}
 
-	public void setMonHocID(String monHocID) {
-		this.monHocID = monHocID;
+	public void setMaMonHoc(String maMonHoc) {
+		this.maMonHoc = maMonHoc;
 	}
 	
 }

@@ -12,11 +12,11 @@ public class HocPhanThuocChuongTrinhDaoTao {
 	private HocPhanThuocChuongTrinhDaoTaoID hocPhanThuocChuongTrinhDaoTaoID = new HocPhanThuocChuongTrinhDaoTaoID();
 	
 	@ManyToOne
-	@MapsId("monHocId")
+	@MapsId("maMonHoc")
 	private MonHoc monHoc;
 	
 	@ManyToOne
-	@MapsId("chuongTrinhDaoTaoID")
+	@MapsId("maChuongTrinhDaoTao")
 	private ChuongTrinhDaoTao chuongTrinhDaoTao;
 	
 	private String loaiChuongTrinh;

@@ -33,7 +33,7 @@ public class MonHocController {
 	@PostMapping("/import")
 	public void mapReadExcelDataToDB(@RequestParam MultipartFile file) throws IOException {
 		monHocService.readMonHocFromFile(file.getInputStream());
-		System.out.println("sent");
 	}
+	
 	
 }
