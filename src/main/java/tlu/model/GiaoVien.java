@@ -24,15 +24,15 @@ public class GiaoVien implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "MA_GIAO_VIEN", length = 10)
+	@Column(name = "MA_GIAO_VIEN", length = 10,  nullable = true)
 	private String maGiaoVien;
 	
 	@ManyToOne
-	@JoinColumn(name = "MA_BO_MON")
+	@JoinColumn(name = "MA_BO_MON", nullable = true)
 	private BoMon thuocBoMon;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "USER_ID")
+	@JoinColumn(name = "USER_ID", nullable = true)
 	private User user;
 
 	

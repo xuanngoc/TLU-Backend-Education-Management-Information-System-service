@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 public class BoMon {
 	
 	@Id
-	@Column(name = "MA_BO_MON", length = 10)
+	@Column(name = "MA_BO_MON", length = 10, nullable = true)
 	private String maBoMon;
 	
-	@Column(name = "TEN_BO_MON", length = 30)
+	@Column(name = "TEN_BO_MON", length = 30,  nullable = true)
 	private String tenBoMon;
 	
 	

@@ -16,11 +16,11 @@ public class NganhHoc {
 	@Column(name = "MA_NGANH_HOC", length = 10)
 	private String maNganhHoc;
 	
-	@Column(name = "TEN_NGANH_HOC", length = 50)
+	@Column(name = "TEN_NGANH_HOC", length = 50, nullable = true)
 	private String tenNganhHoc;
 	
 	@ManyToOne
-	@JoinColumn(name = "MA_BO_MON")
+	@JoinColumn(name = "MA_BO_MON", nullable = true)
 	private BoMon boMon;
 	
 	public NganhHoc() {

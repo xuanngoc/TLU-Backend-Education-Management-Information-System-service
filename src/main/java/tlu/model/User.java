@@ -18,29 +18,29 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "USER_ID")
+	@Column(name = "USER_ID",  nullable = true)
 	private long userId;
 	
-	@Column(name = "USERNAME", length = 30)
+	@Column(name = "USERNAME", length = 30,  nullable = true)
 	private String username;
 	
-	@Column(name = "PASSWORD", length = 100)
+	@Column(name = "PASSWORD", length = 100,  nullable = true)
 	@JsonIgnore
 	private String password;
 	
-	@Column(name = "FULLNAME", length = 50)
+	@Column(name = "FULLNAME", length = 50,  nullable = true)
 	private String fullname;
 	
-	@Column(name = "EMAIL", length = 50)
+	@Column(name = "EMAIL", length = 50,  nullable = true)
 	private String email;
 	
-	@Column(name = "PHONE", length = 15)
+	@Column(name = "PHONE", length = 15, nullable = true)
 	private String phone;
 	
-	@Column(name = "ROLE", length = 30)
+	@Column(name = "ROLE", length = 30, nullable = true)
 	private String role;
 	
-	@Column(name= "LOCKED")
+	@Column(name= "LOCKED", nullable = true)
 	private boolean locked = false;
 
 	
