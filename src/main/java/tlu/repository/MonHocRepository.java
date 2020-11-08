@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import tlu.model.BoMon;
 import tlu.model.MonHoc;
 
 public interface MonHocRepository extends JpaRepository<MonHoc, String> {
@@ -16,4 +17,5 @@ public interface MonHocRepository extends JpaRepository<MonHoc, String> {
 			nativeQuery = true)
 	public List<MonHoc> getListMonHocByCTDD(String maChuongTrinhDaoTao);
 	
+	public List<MonHoc> findByBoMon(BoMon boMon);
 }

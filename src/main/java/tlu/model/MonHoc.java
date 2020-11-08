@@ -3,6 +3,8 @@ package tlu.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -29,6 +31,10 @@ public class MonHoc {
 	
 	@Column(name = "HE_SO")
 	private double heSo;
+	
+	@ManyToOne
+	@JoinColumn(name = "MA_BO_MON", nullable = true)
+	public BoMon boMon;
 	
 	public MonHoc() {
 		super();
@@ -80,6 +86,14 @@ public class MonHoc {
 
 	public void setHeSo(double heSo) {
 		this.heSo = heSo;
+	}
+
+	public BoMon getBoMon() {
+		return boMon;
+	}
+
+	public void setBoMon(BoMon boMon) {
+		this.boMon = boMon;
 	}
 	
 }

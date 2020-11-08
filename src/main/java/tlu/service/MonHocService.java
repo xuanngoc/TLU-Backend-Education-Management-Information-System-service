@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tlu.model.MonHoc;
+import tlu.repository.BoMonRepository;
 import tlu.repository.MonHocRepository;
 
 @Service
@@ -15,6 +16,9 @@ public class MonHocService {
 	
 	@Autowired
 	private MonHocRepository monHocRepository;
+	
+	@Autowired
+	private BoMonRepository boMonRepository;
 	
 	public List<MonHoc> getAll() {
 		return monHocRepository.findAll();
@@ -26,7 +30,7 @@ public class MonHocService {
 	
 	public void readMonHocFromFile(InputStream fileInputStream) {
 		try {
-			FileService.readMonHocFromFile(fileInputStream).forEach(monHoc -> {
+			FileService.readMonHocFromFile(fileInputStream, boMonRepository.findAll()).forEach(monHoc -> {
 				monHocRepository.save(monHoc);
 			});
 		} catch (IOException e) {
@@ -34,4 +38,8 @@ public class MonHocService {
 		}
 	}
 	
+	public List<MonHoc> getMonHocBelongTo(String maBoMon) {
+		
+		return monHocRepository.findByBoMon(boMonRepository.findById(maBoMon).get());
+	}
 }

@@ -36,6 +36,11 @@ public class MonHocController {
 		return new ResponseEntity<List<MonHoc>>(monHocService.getAll1(maChuongTrinhDaoTao), HttpStatus.OK);
 	}
 	
+	@GetMapping("/bo-mon/{maBoMon}")
+	public ResponseEntity<List<MonHoc>> getMonHocs(@PathVariable String maBoMon) {
+		return new ResponseEntity<List<MonHoc>>(monHocService.getMonHocBelongTo(maBoMon), HttpStatus.OK);
+	}
+	
 	@PostMapping("/import")
 	public void mapReadExcelDataToDB(@RequestParam MultipartFile file) throws IOException {
 		monHocService.readMonHocFromFile(file.getInputStream());

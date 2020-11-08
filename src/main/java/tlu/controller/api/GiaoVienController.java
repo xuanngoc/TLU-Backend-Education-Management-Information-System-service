@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import tlu.config.ApplicationRole;
@@ -65,4 +66,11 @@ public class GiaoVienController {
 		giaoVienRepository.save(gVien);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
+	
+	@GetMapping("/ma-bo-mon")
+	public ResponseEntity<String> getMaBoMon(@RequestParam String userId) {
+		String maBoMon =  giaoVienRepository.getMaBoMon(userId);
+		return new ResponseEntity<String>(maBoMon, HttpStatus.OK);
+	}
+	
 }
