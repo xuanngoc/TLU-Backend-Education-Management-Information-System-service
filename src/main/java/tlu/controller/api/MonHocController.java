@@ -25,11 +25,16 @@ public class MonHocController {
 	@Autowired
 	private MonHocService monHocService;
 	
-	@CrossOrigin("http://localhost:3000")
+	//@CrossOrigin("http://localhost:3000")
 	@GetMapping("")
 	public ResponseEntity<List<MonHoc>> getMonHoc() {
 		return new ResponseEntity<List<MonHoc>>(monHocService.getAll(), HttpStatus.OK);
 	}
+	
+	@GetMapping("ma-mon/{maMon}")
+	public ResponseEntity<MonHoc> getMonHocById(@PathVariable String maMon) {
+		return new ResponseEntity<MonHoc>(monHocService.getById(maMon), HttpStatus.OK);
+	} 
 	
 	@GetMapping("/{maChuongTrinhDaoTao}")
 	public ResponseEntity<List<MonHoc>> getMonHoc1(@PathVariable String maChuongTrinhDaoTao) {

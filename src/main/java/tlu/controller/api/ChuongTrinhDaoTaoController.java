@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,15 +50,13 @@ public class ChuongTrinhDaoTaoController {
 	}
 	
 	@PostMapping("/{loaiChuongTrinh}/{maChuongTrinh}")
-	public void themDaiCuong(@PathVariable String loaiChuongTrinh, 
+	public void add(@PathVariable String loaiChuongTrinh, 
 				@PathVariable long maChuongTrinh,
 				@RequestBody MonHocRequest maMonHoc) {
 		ChuongTrinhDaoTao chuongTrinhDaoTao = chuongTrinhDaoTaoRepository.findById(maChuongTrinh).get();
 		MonHoc monHoc = monHocRepository.findById(maMonHoc.getMaMon()).get();
 		
 		HocPhanThuocChuongTrinhDaoTao hptctdTao = new HocPhanThuocChuongTrinhDaoTao();
-		
-		
 		hptctdTao.setChuongTrinhDaoTao(chuongTrinhDaoTao);
 		hptctdTao.setMonHoc(monHoc);
 		
@@ -79,5 +78,10 @@ public class ChuongTrinhDaoTaoController {
 		hptctdTao.setLoaiChuongTrinh(educationProgramType);
 		hocPhanThuocChuongTrinhDaoTaoReposiroty.save(hptctdTao);
 	}	
+	
+	@DeleteMapping("/remove/{id}")
+	public void remove(@PathVariable long id ) {
+		hocPhanThuocChuongTrinhDaoTaoReposiroty.deleteById(id);
+	}
 	
 }

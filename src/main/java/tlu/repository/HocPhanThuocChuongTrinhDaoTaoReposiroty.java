@@ -12,7 +12,7 @@ import tlu.model.HocPhanThuocChuongTrinhDaoTaoID;
 import tlu.model.MonHoc;
 
 public interface HocPhanThuocChuongTrinhDaoTaoReposiroty  
-				extends JpaRepository<HocPhanThuocChuongTrinhDaoTao, HocPhanThuocChuongTrinhDaoTaoID> {
+				extends JpaRepository<HocPhanThuocChuongTrinhDaoTao, Long> {
 
 	@Query(value = "select mon_hoc_ma_mon from "
 			+ "hoc_phan_thuoc_chuong_trinh_dao_tao where "

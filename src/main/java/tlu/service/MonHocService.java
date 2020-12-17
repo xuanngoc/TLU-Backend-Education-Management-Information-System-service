@@ -24,6 +24,10 @@ public class MonHocService {
 		return monHocRepository.findAll();
 	}
 	
+	public MonHoc getById(String maMon) {
+		return monHocRepository.findById(maMon).get();
+	}
+	
 	public List<MonHoc> getAll1(String maChuongTrinhDaoTao) {
 		return monHocRepository.getListMonHocByCTDD(maChuongTrinhDaoTao);
 	}
